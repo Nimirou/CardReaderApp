@@ -32,7 +32,7 @@ export default function App() {
       maxBodyLength: Infinity,
       headers: { "Content-Type": "multipart/form-data" },
       data: bodyFormData,
-      url: "http://janklimes.eu:3000/",
+      url: "https://janklimes.eu:3000/",
     })
       .then((response) => {
         console.log(response);
