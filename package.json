@@ -15,7 +15,8 @@
     "expo-status-bar": "~1.4.4",
     "fs": "^0.0.1-security",
     "react": "18.2.0",
-    "react-native": "0.71.4"
+    "react-native": "0.71.4",
+    "react-native-table-component": "^1.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

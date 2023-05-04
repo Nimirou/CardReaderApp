@@ -1,12 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, FlatList } from "react-native";
 import { Camera } from "expo-camera";
 import axios from "axios";
 import formData from "form-data";
+import { Rows, Table } from "react-native-table-component";
 
 export default function App() {
   const [startCamera, setStartCamera] = React.useState(false);
+  const [cardDetail, setCardDetail] = React.useState( 
+    []);
   let camera;
 
   const __startCamera = async () => {
@@ -35,7 +38,8 @@ export default function App() {
       url: "http://janklimes.eu:3000/",
     })
       .then((response) => {
-        console.log(response);
+        setCardDetail( response.data.map( Object.values ));
+        setStartCamera(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -85,12 +89,25 @@ export default function App() {
       ) : (
         <View
           style={{
+            paddingTop: 50,
             flex: 1,
+            width: "100%",
             backgroundColor: "#fff",
-            justifyContent: "center",
-            alignItems: "center",
           }}
         >
+           <Text
+              style={{
+                paddingLeft: 16,
+                fontWeight: "bold",
+              }}
+            >
+              Tabulka s kartou:
+            </Text>
+            <View style={{ flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' }}>
+            <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
+              <Rows data={cardDetail} textStyle={{ margin: 6}}/>
+            </Table>
+            </View>
           <TouchableOpacity
             onPress={__startCamera}
             style={{
@@ -100,7 +117,12 @@ export default function App() {
               flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
+              alignSelf: "center",
               height: 40,
+              alignSelf: 'center',
+              position: 'absolute',
+              bottom: 120
+
             }}
           >
             <Text
@@ -113,6 +135,7 @@ export default function App() {
               Take picture
             </Text>
           </TouchableOpacity>
+          
         </View>
       )}
     </View>
