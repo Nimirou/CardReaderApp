@@ -17,7 +17,7 @@ export default function App() {
       Alert.alert("Access denied");
     }
   };
-
+  //Function for taking picture and sending it to server
   const __takePicture = async () => {
     if (!camera) return;
     const photo = await camera.takePictureAsync({ base64: true });
