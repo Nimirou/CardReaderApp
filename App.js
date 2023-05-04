@@ -5,8 +5,8 @@ import axios from "axios";
 import { Rows, Table } from "react-native-table-component";
 
 export default function App() {
-  const [startCamera, setStartCamera] = React.useState(false);
-  const [cardDetail, setCardDetail] = React.useState([]);
+  const [startCamera, setStartCamera] = React.useState(false); //State for camera
+  const [cardDetail, setCardDetail] = React.useState([]); //State for card details
   let camera;
   //Function for asking permission to use camera
   const __startCamera = async () => {
