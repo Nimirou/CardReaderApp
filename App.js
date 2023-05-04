@@ -8,7 +8,7 @@ export default function App() {
   const [startCamera, setStartCamera] = React.useState(false);
   const [cardDetail, setCardDetail] = React.useState([]);
   let camera;
-
+  //Function for asking permission to use camera
   const __startCamera = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
     if (status === "granted") {
